@@ -3,7 +3,9 @@ using UnityEngine;
 public class Player : MonoBehaviour, IGameObject
 {
     private int _level;
+    [SerializeField]
     private int _currentHealthPoints;
+    [SerializeField]
     private int _maximumHealthPoints;
     private int _damage;
 
