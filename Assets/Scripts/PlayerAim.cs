@@ -4,7 +4,7 @@ class PlayerAim : MonoBehaviour
 {
     [SerializeField]
     private Camera _camera;
-    private Rigidbody2D _rigidbody;
+    private Rigidbody2D _playerRigidbody;
 
     private Vector2 _mousePosition;
     private Vector2 _playerPosition;
@@ -14,7 +14,7 @@ class PlayerAim : MonoBehaviour
 
     private void Start()
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
+        _playerRigidbody = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -24,11 +24,11 @@ class PlayerAim : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _playerPosition = _rigidbody.position;
+        _playerPosition = _playerRigidbody.position;
         _lookDirection = _mousePosition - _playerPosition;
 
         _angleToRotate = Mathf.Atan2(_lookDirection.y, _lookDirection.x) * Mathf.Rad2Deg;
         
-        _rigidbody.rotation = _angleToRotate;
+        _playerRigidbody.rotation = _angleToRotate;
     }
 }

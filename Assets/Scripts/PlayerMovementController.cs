@@ -13,11 +13,11 @@ public class PlayerMovementController : MonoBehaviour
     private Vector2 _currentPos;
     private Vector2 _newPos;
 
-    private Rigidbody2D _rigidbody;
+    private Rigidbody2D _playerRigidbody;
 
     private void Start()
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
+        _playerRigidbody = GetComponent<Rigidbody2D>();
         _movementSpeed = gameObject.GetComponent<Player>().MovementSpeed;
     }
 
@@ -29,7 +29,7 @@ public class PlayerMovementController : MonoBehaviour
     private void FixedUpdate()
     {
         _newPos = GetNewPosition();
-        _rigidbody.MovePosition(_newPos);
+        _playerRigidbody.MovePosition(_newPos);
     }
 
     private Vector2 GetMovementInput()
@@ -42,7 +42,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private Vector2 GetNewPosition() 
     {
-        _currentPos = _rigidbody.position;
+        _currentPos = _playerRigidbody.position;
 
          return _currentPos + _inputVector * _movementSpeed * Time.deltaTime;
     }

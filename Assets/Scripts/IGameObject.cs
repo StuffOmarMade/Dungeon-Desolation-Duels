@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public interface IGameObject
 {
     public int Level { get; set; }

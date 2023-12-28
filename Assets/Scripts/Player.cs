@@ -19,6 +19,7 @@ public class Player : MonoBehaviour, IGameObject
     public int CurrentHealthPoints { get { return _currentHealthPoints; } set { if (value >= 0) _currentHealthPoints = value; } }
     public int MaximumHealthPoints { get { return _maximumHealthPoints; } set { if (value >= 0) _maximumHealthPoints = value; } }
     public int Damage { get { return _damage; } set { if (value >= 0) _damage = value; } }
+    
     public float MovementSpeed { get { return _movementSpeed; } set { if (value >= 0) _movementSpeed = value; } }
     //public int AmmoLeft { get { return _ammoLeft; } set { if (value >= 0) _ammoLeft = value; } }
     //public int MaximumAmmo { get { return _maximumAmmo; } set { if (value >= 0) _maximumAmmo = value; } }
