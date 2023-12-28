@@ -5,6 +5,4 @@ public interface IGameObject
     public int MaximumHealthPoints { get; set; }
     public int Damage { get; set; }
     public float MovementSpeed { get; set; }
-
-    public void void_Shoot();
 }

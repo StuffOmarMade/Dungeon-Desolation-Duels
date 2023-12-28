@@ -6,6 +6,9 @@ public class Player : MonoBehaviour, IGameObject
     private int _currentHealthPoints;
     private int _maximumHealthPoints;
     private int _damage;
+
+    // for now
+    [SerializeField]
     private float _movementSpeed;
 
     //private int _maximumAmmo;
@@ -25,10 +28,5 @@ public class Player : MonoBehaviour, IGameObject
         MaximumHealthPoints = maximumHealthPoints;
         Damage = damage;
         MovementSpeed = movementSpeed;
-    }
-
-    public void void_Shoot()
-    {
-        
     }
 }
