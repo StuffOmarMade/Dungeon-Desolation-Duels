@@ -6,7 +6,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadSceneAsync("Lobby");
+        SceneManager.LoadSceneAsync("Multjoin");
     }
     public void QuitGame()
     {

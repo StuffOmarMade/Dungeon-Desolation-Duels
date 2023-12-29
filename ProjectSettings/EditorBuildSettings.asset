@@ -9,9 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/main menu.unity
-    guid: ab3b30cb12019ed4f86b91cf6e155651
-  - enabled: 1
     path: Assets/Scenes/Lobby.unity
     guid: e00cd3454f001fb40aabe533c31d3d93
+  - enabled: 1
+    path: Assets/Scenes/multjoin.unity
+    guid: 3b1c57ea2c1359249865517659273014
+  - enabled: 1
+    path: Assets/Scenes/main menu.unity
+    guid: ab3b30cb12019ed4f86b91cf6e155651
   m_configObjects: {}
