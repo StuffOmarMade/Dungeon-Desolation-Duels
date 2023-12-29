@@ -8,7 +8,7 @@ public class menucontroller : MonoBehaviour
     [SerializeField] private string VersioName = "0.1";
     [SerializeField] private GameObject UsernameMenu;
     [SerializeField] private GameObject ConnectPanel;
-
+    
     [SerializeField] private InputField UsernameInput;
     [SerializeField] private InputField CreateGameInput;
     [SerializeField] private InputField JoinGameInput;
@@ -55,5 +55,9 @@ public class menucontroller : MonoBehaviour
     {
         RoomOptions roomOptions = new RoomOptions { MaxPlayers = 2 };
         PhotonNetwork.JoinOrCreateRoom(JoinGameInput.text, roomOptions, TypedLobby.Default);
+    }
+    private void OnJoinedRoom()
+    {
+        PhotonNetwork.LoadLevel("Lobby");
     }
 }
