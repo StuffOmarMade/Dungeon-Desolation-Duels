@@ -34,8 +34,9 @@ public class PlayerShoot : MonoBehaviour
 
     private void ShootBullet() 
     {
-        _bullet = Instantiate(_bulletPrefab, _firePointTransform.position, _firePointTransform.rotation);
+        _firePointTransform = FindObjectOfType<SpawnManager>()._gameObject.transform;
+        _bullet = Instantiate(_bulletPrefab, (_firePointTransform.position + new Vector3(1, 0, 0)), _firePointTransform.rotation);
         _bulletRigidbody = _bullet.GetComponent<Rigidbody2D>();
-        _bulletRigidbody.AddForce(_firePointTransform.up * force, ForceMode2D.Impulse);
+        _bulletRigidbody.AddForce(_firePointTransform.right * force, ForceMode2D.Impulse);
     }
 }

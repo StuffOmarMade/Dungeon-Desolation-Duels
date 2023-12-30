@@ -6,6 +6,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField]
     int damage = 5;
 
+    public bool IsDead = false;
+
     private void Update()
     {
         SetHealth();
@@ -13,10 +15,15 @@ public class PlayerHealth : MonoBehaviour
 
     private void SetHealth() 
     {
-        if(GetComponent<PlayerCollision>().IsHurt)
+        if(GetComponent<PlayerCollision>().IsHurt && GetComponent<Player>().CurrentHealthPoints > 0)
         {
             GetComponent<Player>().CurrentHealthPoints -= damage;
             GetComponent<PlayerCollision>().IsHurt = false;
+            IsDead = false;
+        } else if(GetComponent<Player>().CurrentHealthPoints <= 0) 
+        {
+            Debug.Log("Respawned!!");
+            IsDead = true;
         }
     }
 }
