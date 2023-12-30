@@ -5,6 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class Skill
 {
+    public Skill left;
+    public Skill center;
+    public Skill right;
     public string Name;
     public string Description;
     public int Level;
@@ -23,14 +26,18 @@ public class Skill
 public class SkillBranch
 {
     public string BranchName;
-    public List<Skill> Skills;
-    public List<SkillBranch> SubBranches;
+    public Skill SkillNode;
+    public SkillBranch LeftSubBranch;
+    public SkillBranch CenterSubBranch;
+    public SkillBranch RightSubBranch;
 
     public SkillBranch(string branchName)
     {
         BranchName = branchName;
-        Skills = new List<Skill>();
-        SubBranches = new List<SkillBranch>();
+        SkillNode = null;
+        LeftSubBranch = null;
+        CenterSubBranch = null;
+        RightSubBranch = null;
     }
 }
 
@@ -42,35 +49,45 @@ public class SkillTree
     {
         Root = new SkillBranch("Root");
 
-        // Add Speed branch with levels 1 to 5
-        SkillBranch speedBranch = new SkillBranch("Speed");
-        for (int i = 1; i <= 5; i++)
-        {
-            Skill speedSkill = new Skill($"Speed Level {i}", $"Increase player speed - Level {i}", i, 0);
-            speedSkill.ExperienceRequired = CalculateTotalExperienceRequired(speedSkill.Level);
-            speedBranch.Skills.Add(speedSkill);
-        }
-        Root.SubBranches.Add(speedBranch);
+        // Add skills with levels 1 to 5 under each branch (Health, Speed, Gun Power)
+        Root.LeftSubBranch = CreateSkillBranch("Health", 5);
+        Root.CenterSubBranch = CreateSkillBranch("Speed", 5);
+        Root.RightSubBranch = CreateSkillBranch("Gun Power", 5);
+    }
 
-        // Add Health branch with levels 1 to 5
-        SkillBranch healthBranch = new SkillBranch("Health");
-        for (int i = 1; i <= 5; i++)
+    private SkillBranch CreateSkillBranch(string branchName, int levels)
+    {
+        SkillBranch branch = new SkillBranch(branchName);
+        for (int i = 1; i <= levels; i++)
         {
-            Skill healthSkill = new Skill($"Health Level {i}", $"Increase player health - Level {i}", i, 0);
-            healthSkill.ExperienceRequired = CalculateTotalExperienceRequired(healthSkill.Level);
-            healthBranch.Skills.Add(healthSkill);
+            Skill skill = new Skill($"{branchName} Level {i}", $"Increase {branchName.ToLower()} - Level {i}", i, 0);
+            skill.ExperienceRequired = CalculateTotalExperienceRequired(skill.Level);
+            branch.SkillNode = InsertSkill(branch.SkillNode, skill);
         }
-        Root.SubBranches.Add(healthBranch);
+        return branch;
+    }
 
-        // Add Power branch with levels 1 to 5
-        SkillBranch powerBranch = new SkillBranch("Power");
-        for (int i = 1; i <= 5; i++)
+    public Skill InsertSkill(Skill root, Skill skill)
+    {
+        if (root == null)
         {
-            Skill powerSkill = new Skill($"Power Level {i}", $"Increase shooting power - Level {i}", i, 0);
-            powerSkill.ExperienceRequired = CalculateTotalExperienceRequired(powerSkill.Level);
-            powerBranch.Skills.Add(powerSkill);
+            return skill;
         }
-        Root.SubBranches.Add(powerBranch);
+
+        if (skill.Level < root.Level)
+        {
+            root.left = InsertSkill(root.left, skill);
+        }
+        else if (skill.Level > root.Level)
+        {
+            root.right = InsertSkill(root.right, skill);
+        }
+        else
+        {
+            root.center = InsertSkill(root.center, skill);
+        }
+
+        return root;
     }
 
     public void AddSkill(string branchName, Skill skill)
@@ -85,11 +102,9 @@ public class SkillTree
                 skill.ExperienceRequired += CalculateExperienceRequired(i);
             }
 
-            branch.Skills.Add(skill);
+            branch.SkillNode = InsertSkill(branch.SkillNode, skill);
         }
     }
-
-    // Rest of the methods remain unchanged...
 
     private SkillBranch FindBranch(string branchName)
     {
@@ -110,16 +125,17 @@ public class SkillTree
             return branch;
         }
 
-        foreach (SkillBranch subBranch in branch.SubBranches)
+        SkillBranch foundBranch = FindBranchRecursive(branch.LeftSubBranch, branchName);
+        if (foundBranch == null)
         {
-            SkillBranch foundBranch = FindBranchRecursive(subBranch, branchName);
-            if (foundBranch != null)
+            foundBranch = FindBranchRecursive(branch.CenterSubBranch, branchName);
+            if (foundBranch == null)
             {
-                return foundBranch;
+                foundBranch = FindBranchRecursive(branch.RightSubBranch, branchName);
             }
         }
 
-        return null;
+        return foundBranch;
     }
 
     private int CalculateExperienceRequired(int level)

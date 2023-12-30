@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a6e8dc287cf5072478409ca9df35bba6
+guid: 63a42c7daeba30f45bc7d4bd22c5dcfd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -29,19 +29,13 @@ TextureImporter:
   generateCubemap: 6
   cubemapConvolution: 0
   seamlessCubemap: 0
-  textureFormat: -1
-  maxTextureSize: 1024
+  textureFormat: 1
+  maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-<<<<<<< Updated upstream:Assets/Photon Unity Networking/Demos/DemoRockPaperScissors/Assets/IconAgain.png.meta
-    filterMode: -1
-    aniso: 0
-    mipBias: -100
-=======
-    filterMode: 0
-    aniso: 16
+    filterMode: 1
+    aniso: 1
     mipBias: 0
->>>>>>> Stashed changes:Assets/Photon/PhotonUnityNetworking/Demos/DemoHub/Sprites/Gradient.png.meta
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -53,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 3
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -68,12 +62,12 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 1
-  cookieLightType: 1
+  applyGammaDecoding: 0
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -82,10 +76,10 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 256
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -94,10 +88,10 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Server
-    maxTextureSize: 256
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -106,19 +100,15 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites: []
     outline: []
     physicsShape: []
     bones: []
-<<<<<<< Updated upstream:Assets/Photon Unity Networking/Demos/DemoRockPaperScissors/Assets/IconAgain.png.meta
-    spriteID: 290588cb912f2924bb493808a155c2d4
-=======
-    spriteID: 9f2a0d94850205c449718d6a65b6da2c
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
->>>>>>> Stashed changes:Assets/Photon/PhotonUnityNetworking/Demos/DemoHub/Sprites/Gradient.png.meta
     vertices: []
     indices: 
     edges: []
