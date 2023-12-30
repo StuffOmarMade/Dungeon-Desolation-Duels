@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 
 class PlayerAim : MonoBehaviour 
@@ -12,23 +13,33 @@ class PlayerAim : MonoBehaviour
 
     private float _angleToRotate;
 
+    private PhotonView _view;
+
     private void Start()
     {
+        _camera = Camera.main;
         _playerRigidbody = GetComponent<Rigidbody2D>();
+        _view = GetComponent<PhotonView>();
     }
 
     private void Update()
     {
-        _mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
+        if(_view.IsMine) 
+        {
+            _mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
+        }
     }
 
     private void FixedUpdate()
     {
-        _playerPosition = _playerRigidbody.position;
-        _lookDirection = _mousePosition - _playerPosition;
+        if(_view.IsMine) 
+        { 
+            _playerPosition = _playerRigidbody.position;
+            _lookDirection = _mousePosition - _playerPosition;
 
-        _angleToRotate = Mathf.Atan2(_lookDirection.y, _lookDirection.x) * Mathf.Rad2Deg;
+            _angleToRotate = Mathf.Atan2(_lookDirection.y, _lookDirection.x) * Mathf.Rad2Deg;
         
-        _playerRigidbody.rotation = _angleToRotate;
+            _playerRigidbody.rotation = _angleToRotate;
+        }
     }
 }
