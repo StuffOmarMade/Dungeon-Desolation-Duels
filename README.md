@@ -20,7 +20,7 @@ Dungeon Desolation Duels is a top-down PvP multiplayer game created using Unity 
 
 ### Installation
 
-1. Clone the repository: `git clone https://github.com/StuffOmarMade/AdvProg_Game.git`
+1. Clone the repository: `git clone https://github.com/StuffOmarMade/Dungeon-Desolation-Duels/`
 2. Open the project in Unity.
 3. Set up Photon according to the documentation.
 4. Build and run the game.
